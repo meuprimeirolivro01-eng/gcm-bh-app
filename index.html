@@ -388,7 +388,17 @@ button,.btn,a.btn{border-color:#1a4d78;background:#0a2848}
   nav button{white-space:nowrap}
 }
 
-</style></head>
+</style>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#03152b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GCM BH Estudos">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+</head>
 <body><div class="app">
 
 <section class="hero gcmbh-hero">
@@ -840,4 +850,15 @@ function practiceLesson(){
 
 function clearWrong(){if(confirm("Apagar o histórico de erros?")){saved.wrong=[];localStorage.setItem("gcmBHv2",JSON.stringify(saved));errors()}}
 renderStudy();setupLessons();updateHomeProgress();
-</script></body></html>
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js').catch(err => {
+      console.log('Service Worker não registrado:', err);
+    });
+  });
+}
+</script>
+
+</body></html>
